@@ -14,7 +14,7 @@ public interface MiLista<E> extends Iterable<E> {
      * Añade un elemento al final de la lista.
      *
      * @param e El elemento a ser añadido.
-     */as
+     */
     public void agregar(E e);
 
     /**
@@ -61,7 +61,7 @@ public interface MiLista<E> extends Iterable<E> {
      *
      * @return true si la lista no contiene elementos, false en caso contrario.
      */
-    public boolean isEmpty();
+    public boolean estaVacio();
 
     /**
      * Devuelve el índice de la última ocurrencia del elemento especificado en la

@@ -19,7 +19,7 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * Constructor por defecto.
      * Inicializa una lista vacía.
      */
-    protected MiListaAbstracta() {
+    protected MiListaAbstracta() { 
     }
 
     /**
@@ -38,8 +38,8 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public void agregar(E e) {
-        agregar(tamanho, e);
+    public void agregar(E e) { // Añade al final de la lista 
+        agregar(tamanho, e); // Inserta en el final de la lista con el tamaño actual como índice 
     }
 
     /**
@@ -47,7 +47,7 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public boolean isEmpty() {
+    public boolean estaVacio() { // Devuelve true si la lista está vacía 
         return tamanho == 0;
     }
 
@@ -56,8 +56,8 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public int tamanho() {
-        return tamanho;
+    public int tamanho() { // Devuelve el tamaño de la lista
+        return tamanho; 
     }
 
     /**
@@ -65,12 +65,12 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public boolean eliminar(E e) {
-        if (indiceAlPrimerBuscado(e) >= 0) {
-            eliminar(indiceAlPrimerBuscado(e));
-            return true;
+    public boolean eliminar(E e) { // Elimina la primera ocurrencia del elemento e de la lista
+        if (indiceAlPrimerBuscado(e) >= 0) {    // Si el elemento está en la lista 
+            eliminar(indiceAlPrimerBuscado(e));  // Elimina el elemento usando el índice obtenido del método indiceAlPrimerBuscado
+            return true; // Elemento eliminado
         }
-        return false;
+        return false; // Elemento no encontrado
     }
 
     /**
@@ -78,10 +78,10 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public boolean agregarTodo(MiLista<E> otraLista) {
-        int ultimoTamanho = tamanho;
-        otraLista.forEach(e -> agregar(e));
-        return ultimoTamanho != tamanho;
+    public boolean agregarTodo(MiLista<E> otraLista) { // Funcion booleana que agrega todos los elementos de otra lista a esta lista 
+        int ultimoTamanho = tamanho; // Guarda el tamaño actual de la lista
+        otraLista.forEach(e -> agregar(e)); // Utiliza el método forEach de la interfaz MiLista para agregar cada elemento de otraLista a esta lista
+        return ultimoTamanho != tamanho; // Devuelve true si el tamaño de la lista cambió
     }
 
     /**
@@ -89,14 +89,14 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public boolean removerTodo(MiLista<E> otraLista) {
-        int ultimoTamanho = tamanho;
-        for (E e : otraLista) {
-            if (contiene(e)) {
-                eliminar(e);
+    public boolean removerTodo(MiLista<E> otraLista) { // Funcion booleana que remueve todos los elementos de otra lista de esta lista
+        int ultimoTamanho = tamanho; // Guarda el tamaño actual de la lista
+        for (E e : otraLista) { // Itera sobre cada elemento de otraLista utilizando un for mejorado 
+            if (contiene(e)) { // Si el elemento está en la lista 
+                eliminar(e); // entonces se elimina el elemento de la lista
             }
         }
-        return ultimoTamanho != tamanho;
+        return ultimoTamanho != tamanho; // Devuelve true si el tamaño de la lista cambió
     }
 
     /**
@@ -104,13 +104,13 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      * 
      */
     @Override
-    public boolean retenerTodo(MiLista<E> otherList) {
-        int ultimoTamanho = tamanho;
-        for (int i = tamanho - 1; i >= 0; i--) {
-            if (!otherList.contiene(get(i))) {
-                eliminar(get(i));
-            }
+    public boolean retenerTodo(MiLista<E> otraLista) { // Funcion booleana que retiene todos los elementos de otra lista en esta lista
+        int ultimoTamanho = tamanho; // Guarda el tamaño actual de la lista
+        for (int i = tamanho - 1; i >= 0; i--) { // Itera sobre cada elemento de la lista utilizando un for inverso
+            if (!otraLista.contiene(get(i))) { // Si el elemento no está en la otraLista
+                eliminar(get(i)); // entonces se elimina el elemento de la lista
+            } 
         }
-        return ultimoTamanho != tamanho;
+        return ultimoTamanho != tamanho; // Devuelve true si el tamaño de la lista cambió
     }
 }

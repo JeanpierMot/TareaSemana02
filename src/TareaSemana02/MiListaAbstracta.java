@@ -27,10 +27,10 @@ public abstract class MiListaAbstracta<E> implements MiLista<E> {
      *
      * @param objetos Array de elementos de tipo E para ser añadidos a la lista.
      */
-    protected MiListaAbstracta(E[] objetos) {
+    protected MiListaAbstracta(E[] objetos) { 
 
-        for (int i = 0; i < objetos.length; i++)
-            agregar(objetos[i]);
+        for (int i = 0; i < objetos.length; i++) // Itera sobre cada elemento del array
+            agregar(objetos[i]); // Añade el elemento a la lista
     }
 
     /**
